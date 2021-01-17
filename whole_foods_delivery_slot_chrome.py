@@ -1,6 +1,8 @@
 import bs4
 
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+
 
 import sys
 import time
@@ -33,7 +35,10 @@ def getWFSlot(productUrl):
        'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36',
    }
 
-   driver = webdriver.Chrome()
+
+   driver = webdriver.Chrome(ChromeDriverManager().install())
+
+   # driver = webdriver.Chrome()
    driver.get(productUrl)           
    html = driver.page_source
    soup = bs4.BeautifulSoup(html)
